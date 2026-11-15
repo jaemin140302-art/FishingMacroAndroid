@@ -37,11 +37,11 @@ jobs:
           "$SDKMANAGER" --sdk_root="$ANDROID_HOME" --install "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
       - name: Build APK
-        run: gradle assembleDebug --no-daemon
+        run: gradle -p App assembleDebug --no-daemon
 
       - name: Save APK
         uses: actions/upload-artifact@v4
         with:
           name: FishingMacro-debug-apk
-          path: '**/build/outputs/apk/debug/*.apk'
+          path: 'App/build/outputs/apk/debug/*.apk'
           if-no-files-found: error
